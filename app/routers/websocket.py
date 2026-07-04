@@ -225,6 +225,7 @@ async def websocket_endpoint(websocket: WebSocket):
         traceback.print_exc()
         print(f"Fatal error in websocket: {e}")
         with open("fatal_error.txt", "w") as fef:
+            import traceback
             traceback.print_exc(file=fef)
         try:
             await websocket.close()
