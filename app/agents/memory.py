@@ -1,13 +1,13 @@
 import os
 from langchain_chroma import Chroma
-from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_core.documents import Document
 
 class MemoryDatabase:
     def __init__(self, persist_directory="./.chroma"):
         self.persist_directory = persist_directory
-        # Use sentence-transformers for local, fast embeddings
-        self.embedding_function = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+        # Use Google GenAI embeddings for zero local memory footprint (fixes Render OOM)
+        self.embedding_function = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
         
         # Initialize Chroma vector store
         self.vector_store = Chroma(
