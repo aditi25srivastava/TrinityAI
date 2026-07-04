@@ -72,6 +72,8 @@ Navigate to `http://localhost:8001/dashboard` in your browser.
 ### 3. Start the Frontend
 Open the `trinity` Unity project, hit **Play**, and hold the **Spacebar** to speak! Use keys `1-4` to switch personalities, and `S` to share your screen!
 
+ LIVE DEMO: https://gentle-dango-738894.netlify.app/
+
 <img width="1680" height="1050" alt="Screenshot 2026-07-04 at 10 08 50 PM" src="https://github.com/user-attachments/assets/9846d204-321f-487c-b10a-08e3b84c5484" />
 <img width="1680" height="1050" alt="Screenshot 2026-07-04 at 10 09 30 PM" src="https://github.com/user-attachments/assets/6b736dd4-ceb2-4a05-987a-a472ad3b147c" />
 
