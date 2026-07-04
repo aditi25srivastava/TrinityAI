@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/aditisrivastava/Earner/trinity_ai/app/routers/websocket.py", line 206, in websocket_endpoint
+    satisfaction_score=float(satisfaction_score),
+                             ^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'satisfaction_score' where it is not associated with a value

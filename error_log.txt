@@ -1,0 +1,162 @@
+Traceback (most recent call last):
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/connector.py", line 1571, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/connector.py", line 1181, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/connector.py", line 1212, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/resolver.py", line 40, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "uvloop/loop.pyx", line 1529, in getaddrinfo
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/aditisrivastava/Earner/trinity_ai/app/routers/websocket.py", line 93, in websocket_endpoint
+    result = await coordinator_graph.ainvoke(state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/pregel/main.py", line 4105, in ainvoke
+    async for chunk in self.astream(
+    ...<30 lines>...
+            chunks.append(chunk)
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/pregel/main.py", line 3455, in astream
+    async for _ in runner.atick(
+    ...<16 lines>...
+            yield o
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/pregel/_runner.py", line 396, in atick
+    await arun_with_retry(
+    ...<15 lines>...
+    )
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/pregel/_retry.py", line 744, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/_internal/_runnable.py", line 733, in ainvoke
+    input = await asyncio.create_task(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        step.ainvoke(input, config, **kwargs), context=context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/_internal/_runnable.py", line 492, in ainvoke
+    ret = await asyncio.create_task(coro, context=context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langgraph/prebuilt/chat_agent_executor.py", line 707, in acall_model
+    response = cast(AIMessage, await static_model.ainvoke(model_input, config))  # type: ignore[union-attr]
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 3484, in ainvoke
+    input_ = await coro_with_context(part(), context, create_task=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/runnables/fallbacks.py", line 262, in ainvoke
+    raise first_error
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/runnables/fallbacks.py", line 247, in ainvoke
+    output = await coro_with_context(coro, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/runnables/base.py", line 6017, in ainvoke
+    return await self.bound.ainvoke(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 499, in ainvoke
+    llm_result = await self.agenerate_prompt(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1860, in agenerate_prompt
+    return await self.agenerate(
+           ^^^^^^^^^^^^^^^^^^^^^
+        prompt_messages, stop=stop, callbacks=callbacks, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 1818, in agenerate
+    raise exceptions[0]
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_core/language_models/chat_models.py", line 2151, in _agenerate_with_cache
+    result = await self._agenerate(
+             ^^^^^^^^^^^^^^^^^^^^^^
+        messages, stop=stop, run_manager=run_manager, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/langchain_google_genai/chat_models.py", line 3275, in _agenerate
+    await self.client.aio.models.generate_content(
+        **request,
+    )
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/google/genai/models.py", line 8641, in generate_content
+    return await self._generate_content(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        model=model, contents=contents, config=final_parsed_config
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/google/genai/models.py", line 7115, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'post', path, request_dict, http_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/google/genai/_api_client.py", line 1664, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        http_request=http_request, http_options=http_options, stream=False
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/google/genai/_api_client.py", line 1596, in _async_request
+    return await retry(self._async_request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/concurrent/futures/_base.py", line 395, in __get_result
+    raise self._exception
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/google/genai/_api_client.py", line 1551, in _async_request_once
+    response = await self._aiohttp_session.request(  # type: ignore[union-attr]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/client.py", line 856, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/client.py", line 810, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aditisrivastava/Earner/trinity_ai/venv/lib/python3.14/site-packages/aiohttp/connector.py", line 1577, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host generativelanguage.googleapis.com:443 ssl:<ssl.SSLContext object at 0x133c04980> [nodename nor servname provided, or not known]
+During task with name 'agent' and id '82024530-5bc5-9b4a-acc6-0f002064694c'

@@ -1,0 +1,15 @@
+# DSA Notes - Chapter 1
+
+## Binary Search Trees (BST)
+A Binary Search Tree is a node-based binary tree data structure which has the following properties:
+- The left subtree of a node contains only nodes with keys lesser than the node's key.
+- The right subtree of a node contains only nodes with keys greater than the node's key.
+- The left and right subtree each must also be a binary search tree.
+
+Time Complexity for searching in a balanced BST is O(log n). If the tree is unbalanced, the worst-case time complexity degrades to O(n).
+
+## Dijkstra's Algorithm
+Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph.
+For a given source node in the graph, the algorithm finds the shortest path between that node and every other.
+It uses a priority queue (min-heap) to greedily select the closest node that has not yet been processed.
+Time complexity is O(V^2) with an array, or O((V + E) log V) with a min-heap.
