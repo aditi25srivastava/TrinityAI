@@ -50,7 +50,7 @@ Trinity AI is a state-of-the-art, fully autonomous 3D Digital Twin powered by a 
 - **AI Models**: Google Gemini 2.5 Pro/Flash, OpenAI Whisper (Offline), HuggingFace Transformers
 - **Databases**: ChromaDB (Vector Search), SQLite (Analytics)
 
-## 🏃‍♂️ Getting Started
+##  Getting Started
 
 ### 1. Start the Backend
 ```bash
